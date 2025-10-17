@@ -4,6 +4,7 @@
 #include <string.h>
 #include <limits.h>
 #include <errno.h>
+#include <time.h>
 
 int main()
 {
@@ -38,7 +39,7 @@ int main()
     printf("\n");
     
     printf("Введите элементы массива:\n");
-    for (int i = 1; i <= n; i++) {
+    /*for (int i = 1; i <= n; i++) {
         while (1) {
         printf("a[%d] = ", i);
         fgets(input, sizeof(input), stdin);
@@ -56,7 +57,21 @@ int main()
         if (a[i] < 0) {
             prNeg *= a[i];
         }
+    } */
+
+    srand(time(0));
+    for (int i = 1; i <= n; i++) {
+        a[i] = ((float) rand() / (RAND_MAX + 1.0)) * 20 - 10;
+        if (a[i] < 0) {
+            prNeg *= a[i];
+        }
     }
+
+    for (int i = 1; i <= n; i++) {
+        printf("a[%d] = %f\n", i, a[i]);
+    }
+
+    printf("\n");
 
     int imax = 1;
     for (int i = 2; i <= n; i++) {
